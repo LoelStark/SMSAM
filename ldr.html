@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSAM | Light Intensity</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="brand">
+                <h1 class="brand-name">SMSAM</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <span>🏠</span> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>ℹ️</span> About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="camera.html" class="nav-link">
+                        <span>📷</span> Live Cam
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header animate-fade">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Light Intensity Monitoring</h2>
+                    <p style="color: var(--text-dim);">Live data from Photoresistor (LDR) Sensor</p>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Live Card -->
+                <div class="glass-card animate-fade">
+                    <div class="card-header">
+                        <div class="card-icon">☀️</div>
+                        <div id="ldr-status" class="status-badge" style="color: var(--success); font-weight: 700; font-size: 0.8rem;">BRIGHT</div>
+                    </div>
+                    <div class="card-value" style="font-size: 4rem;">
+                        <span id="ldr-val">85</span><span style="font-size: 2rem; color: var(--text-muted);">%</span>
+                    </div>
+                    <div class="progress-container" style="height: 12px;">
+                        <div id="ldr-bar" class="progress-bar" style="width: 85%;"></div>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--text-dim);">Real-time ambient light level tracking.</p>
+                </div>
+
+                <!-- Details Card -->
+                <div class="glass-card animate-fade" style="animation-delay: 0.1s;">
+                    <h3 style="margin-bottom: 1.5rem;">How it Works</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem;">
+                        The <strong>LDR (Light Dependent Resistor)</strong> works by decreasing its resistance as the intensity of light increases. This change is converted into a percentage for easier monitoring.
+                    </p>
+                    <ul style="list-style: none; color: var(--text-dim); line-height: 2;">
+                        <li>✅ Sensitivity: High</li>
+                        <li>✅ Range: 0% (Total Dark) to 100% (Direct Light)</li>
+                        <li>✅ Response Time: < 30ms</li>
+                        <li>✅ Application: Day/Night Detection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Graph Placeholder -->
+            <div class="glass-card animate-fade" style="margin-top: 1.5rem; animation-delay: 0.2s; height: 300px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--border-glass);">
+                <p style="color: var(--text-muted);">Light Intensity Trend Graph Coming Soon</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSAM | Temperature Monitoring</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="brand">
+                <h1 class="brand-name">SMSAM</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <span>🏠</span> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>ℹ️</span> About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="camera.html" class="nav-link">
+                        <span>📷</span> Live Cam
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header animate-fade">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Temperature Monitoring</h2>
+                    <p style="color: var(--text-dim);">Live data from DHT22 Precision Sensor</p>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Live Card -->
+                <div class="glass-card animate-fade">
+                    <div class="card-header">
+                        <div class="card-icon">🌡️</div>
+                        <div id="temperature-status" class="status-badge" style="color: var(--success); font-weight: 700; font-size: 0.8rem;">NORMAL</div>
+                    </div>
+                    <div class="card-value" style="font-size: 4rem;">
+                        <span id="temperature-val">24.5</span><span style="font-size: 2rem; color: var(--text-muted);">°C</span>
+                    </div>
+                    <div class="progress-container" style="height: 12px;">
+                        <div id="temperature-bar" class="progress-bar" style="width: 40%;"></div>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--text-dim);">Real-time ambient temperature tracking.</p>
+                </div>
+
+                <!-- Details Card -->
+                <div class="glass-card animate-fade" style="animation-delay: 0.1s;">
+                    <h3 style="margin-bottom: 1.5rem;">How it Works</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem;">
+                        The <strong>DHT22</strong> sensor measures ambient temperature by sensing the changes in electrical resistance of a moisture-holding substrate.
+                    </p>
+                    <ul style="list-style: none; color: var(--text-dim); line-height: 2;">
+                        <li>✅ Range: -40°C to 80°C</li>
+                        <li>✅ Accuracy: ±0.5°C</li>
+                        <li>✅ Sampling Rate: 0.5Hz (Every 2 seconds)</li>
+                        <li>✅ Low power consumption (3.3V - 5.5V)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Graph Placeholder -->
+            <div class="glass-card animate-fade" style="margin-top: 1.5rem; animation-delay: 0.2s; height: 300px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--border-glass);">
+                <p style="color: var(--text-muted);">Live Analytics Graph Coming Soon</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSAM | Proximity Monitoring</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="brand">
+                <h1 class="brand-name">SMSAM</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <span>🏠</span> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>ℹ</span> About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="camera.html" class="nav-link">
+                        <span>📷</span> Live Cam
+                    </a>
+                </li>
+                
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header animate-fade">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Proximity Radar</h2>
+                    <p style="color: var(--text-dim);">Live data from HC-SR04 Ultrasonic Sensor</p>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <!-- Live Card -->
+                <div class="glass-card animate-fade">
+                    <div class="card-header">
+                        <div class="card-icon">📡</div>
+                        <div id="distance-status" class="status-badge" style="color: var(--success); font-weight: 700; font-size: 0.8rem;">NORMAL</div>
+                    </div>
+                    <div class="card-value" style="font-size: 4rem;">
+                        <span id="distance-val">120</span><span style="font-size: 2rem; color: var(--text-muted);">cm</span>
+                    </div>
+                    <div class="progress-container" style="height: 12px;">
+                        <div id="distance-bar" class="progress-bar" style="width: 30%;"></div>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--text-dim);">Real-time distance measurement to nearest object.</p>
+                </div>
+
+                <!-- Details Card -->
+                <div class="glass-card animate-fade" style="animation-delay: 0.1s;">
+                    <h3 style="margin-bottom: 1.5rem;">Ultrasonic Echo</h3>
+                    <p style="color: var(--text-dim); line-height: 1.8; margin-bottom: 1rem;">
+                        The <strong>HC-SR04</strong> sensor uses sonar to determine the distance to an object, similar to how bats or dolphins use echolocation.
+                    </p>
+                    <ul style="list-style: none; color: var(--text-dim); line-height: 2;">
+                        <li>✅ Range: 2cm - 400cm</li>
+                        <li>✅ Accuracy: ±3mm</li>
+                        <li>✅ Operating Angle: < 15 Degrees</li>
+                        <li>✅ Resolution: 1cm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Visualization Placeholder -->
+            <div class="glass-card animate-fade" style="margin-top: 1.5rem; animation-delay: 0.2s; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed var(--border-glass);">
+                <div style="width: 80%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden; position: relative;">
+                    <div id="distance-viz" style="position: absolute; left: 0; top: 0; height: 100%; width: 30%; background: var(--primary); box-shadow: 0 0 20px var(--primary-glow); transition: width 0.3s ease;"></div>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 2rem;">Radar Visualization Active</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script>
+        // Specific viz update for this page
+        setInterval(() => {
+            const val = parseInt(document.getElementById('distance-val').textContent);
+            const viz = document.getElementById('distance-viz');
+            if (viz) {
+                const pct = Math.min(100, (val / 400) * 100);
+                viz.style.width = pct + '%';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

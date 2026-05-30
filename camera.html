@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMSAM | Live Camera Feed</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="brand">
+                <h1 class="brand-name">SMSAM</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <span>🏠</span> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>ℹ</span> About
+                    </a>
+                </li>
+                
+                
+            </ul>
+
+            <div class="user-profile">
+                <div class="avatar"></div>
+                <div class="user-info">
+                    <div style="font-weight: 600; font-size: 0.9rem;">Admin</div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header animate-fade">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Live Surveillance</h2>
+                    <p style="color: var(--text-dim);">Real-time stream from ESP32-CAM Module</p>
+                </div>
+                <div class="glass-card" style="padding: 12px 24px; border-radius: 100px;">
+                    <span style="color: var(--danger); font-weight: 700;">● REC</span>
+                    <span id="live-clock" style="margin-left: 1rem;">--:--:--</span>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+                <!-- Camera Feed Container -->
+                <div class="glass-card animate-fade" style="padding: 0; overflow: hidden; height: 500px; position: relative;">
+                    <!-- Placeholder for actual stream -->
+                    <div style="width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">📹</div>
+                        <p style="color: var(--text-muted);">Waiting for ESP32-CAM stream...</p>
+                        
+                        <!-- Static Overlay effect -->
+                        <div style="position: absolute; inset: 0; background: repeating-linear-gradient(rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px); pointer-events: none;"></div>
+                    </div>
+
+                    <!-- HUD Overlay -->
+                    <div style="position: absolute; top: 20px; left: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
+                        CAM_ID: SG-01<br>
+                        FPS: 24.5<br>
+                        BW: 1.2 MB/s
+                    </div>
+                </div>
+
+                <!-- Camera Details -->
+                <div class="glass-card animate-fade" style="animation-delay: 0.1s;">
+                    <h3 style="margin-bottom: 1.5rem;">Camera Specs</h3>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem;">Hardware</div>
+                            <p style="color: var(--text-dim); font-size: 0.85rem;">OV2640 Image Sensor on ESP32-CAM development board.</p>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem;">Resolution</div>
+                            <p style="color: var(--text-dim); font-size: 0.85rem;">UXGA (1600 x 1200) max. Currently streaming at VGA (640x480) for performance.</p>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem;">Features</div>
+                            <p style="color: var(--text-dim); font-size: 0.85rem;">Low-power, Wi-Fi connectivity, JPEG output support.</p>
+                        </div>
+                        
+                        <button class="btn btn-primary" style="margin-top: 1rem;">Refresh Feed</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="glass-card animate-fade" style="margin-top: 1.5rem; animation-delay: 0.2s;">
+                <h3 style="margin-bottom: 1.5rem;">Stream Controls</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Exposure</label>
+                        <input type="range" class="form-input" style="padding: 0;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Saturation</label>
+                        <input type="range" class="form-input" style="padding: 0;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Brightness</label>
+                        <input type="range" class="form-input" style="padding: 0;">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
